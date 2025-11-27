@@ -5,129 +5,92 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Osmium Studio</title>
 <style>
-    body {
-        margin: 0;
-        background: #000;
-        font-family: Arial, sans-serif;
-        color: #fff;
-        overflow-x: hidden;
-    }
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family: Arial, sans-serif; background: #000; color: #fff; height:100vh; overflow:hidden;}
+    a {color:#00ccff; text-decoration:none; transition: 0.3s;}
+    a:hover {color:#00ffcc;}
 
-    /* Parallax Avatar */
-    .parallax {
-        position: relative;
-        height: 100vh;
-        background-image: url("OsmiumStudio_avatar_gradient.png");
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
+    .container {display:flex; height:100vh;}
+
+    /* Left: Avatar */
+    .left {
+        flex:1;
+        background-image: url('OsmiumStudio_avatar_gradient.png');
         background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display:flex;
+        justify-content:center;
+        align-items:center;
         filter: brightness(0.8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-size: 60px;
-        font-weight: bold;
-        color: #fff;
-        animation: fadeIn 2s ease forwards;
-    }
-
-    /* Music Controls */
-    #music-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #111;
-        border: none;
-        color: #00ccff;
-        padding: 10px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: all 0.3s ease;
-        z-index: 1000;
-    }
-
-    #music-btn:hover {
-        background: #222;
-        transform: scale(1.05);
-    }
-
-    .content {
-        padding: 60px 20px;
-        text-align: center;
-    }
-
-    .title {
-        font-size: 48px;
-        font-weight: bold;
-        margin-bottom: 40px;
-        animation: slideUp 1.5s ease forwards;
-    }
-
-    .project-card {
-        margin: 30px auto;
-        width: 80%;
-        max-width: 600px;
-        background: #111;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 0 30px #444;
-        opacity: 0;
-        transform: translateY(50px);
-        animation: fadeInUp 1s forwards;
-        animation-delay: 0.5s;
-    }
-
-    .project-card img {
-        width: 100%;
-        border-radius: 10px;
-        margin-bottom: 15px;
         transition: transform 0.3s ease;
     }
 
-    .project-card img:hover {
-        transform: scale(1.05);
+    .left:hover {transform: scale(1.02);}
+
+    /* Right: Info */
+    .right {
+        flex:1;
+        padding: 50px;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        gap: 30px;
+        overflow-y:auto;
     }
 
-    a {
-        color: #00aaff;
-        font-size: 20px;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
+    .title {font-size: 50px; font-weight:bold; animation: fadeInRight 1s ease forwards;}
+    .subtitle {font-size: 24px; color:#ccc; animation: fadeInRight 1.2s ease forwards;}
+    .project-card {background:#111; padding:20px; border-radius:12px; box-shadow:0 0 20px #333; opacity:0; transform:translateX(50px); animation: fadeInUp 1s forwards; animation-delay:1s;}
+    .project-card img {width:100%; border-radius:10px; margin-bottom:10px; transition: transform 0.3s ease;}
+    .project-card img:hover {transform:scale(1.05);}
+    .project-card a {font-size:18px;}
 
-    a:hover {
-        color: #00ffcc;
+    /* Music button */
+    #music-btn {
+        background:#111; border:none; color:#00ccff; padding:10px 15px; border-radius:8px; cursor:pointer; font-size:16px; width:150px; transition:0.3s;
     }
+    #music-btn:hover {background:#222; transform:scale(1.05);}
 
     /* Animations */
-    @keyframes fadeIn {
-        from {opacity: 0;}
-        to {opacity: 1;}
-    }
-
-    @keyframes slideUp {
-        from {transform: translateY(50px); opacity:0;}
-        to {transform: translateY(0); opacity:1;}
-    }
-
-    @keyframes fadeInUp {
-        from {opacity: 0; transform: translateY(50px);}
-        to {opacity: 1; transform: translateY(0);}
-    }
-
+    @keyframes fadeInRight {from{opacity:0; transform:translateX(50px);} to{opacity:1; transform:translateX(0);}}
+    @keyframes fadeInUp {from{opacity:0; transform:translateY(50px);} to{opacity:1; transform:translateY(0);}}
 </style>
 </head>
-
 <body>
+
+<div class="container">
+    <!-- Left: Avatar -->
+    <div class="left"></div>
+
+    <!-- Right: Info -->
+    <div class="right">
+        <div class="title">Osmium Studio</div>
+        <div class="subtitle">Our Roblox Projects</div>
+
+        <!-- Game Card -->
+        <div class="project-card">
+            <h2>Game</h2>
+            <img src="https://tr.rbxcdn.com/180DAY-3dba360d5a57f5c9f0320bc9bf468aa2/768/432/Image/Webp/noFilter" alt="Game">
+            <a href="https://www.roblox.com/games/139755066781834/1-2-OsmiumHvH" target="_blank">Play the Game</a>
+        </div>
+
+        <!-- Group Card -->
+        <div class="project-card">
+            <h2>Group</h2>
+            <img src="https://tr.rbxcdn.com/180DAY-0be07e9b0df1c3bb905cabd5cfe6d18d/150/150/Image/Webp/noFilter" alt="Group">
+            <a href="https://www.roblox.com/communities/823010003/Osmium-Studio#!/about" target="_blank">Visit the Group</a>
+        </div>
+
+        <!-- Music Control -->
+        <button id="music-btn">Play Music</button>
+    </div>
+</div>
 
 <!-- Music -->
 <audio id="bg-music" loop>
-    <source src="bg-music.mp3" type="audio/mpeg">
+    <source src="dabbackwood — сейджуро акаши 2) (www.lightaudio.ru).mp3" type="audio/mpeg">
 </audio>
-<button id="music-btn">Play Music</button>
 
 <script>
 const music = document.getElementById('bg-music');
@@ -135,15 +98,8 @@ const musicBtn = document.getElementById('music-btn');
 let isPlaying = false;
 
 musicBtn.addEventListener('click', () => {
-    if (!isPlaying) {
-        music.play();
-        musicBtn.textContent = "Pause Music";
-        isPlaying = true;
-    } else {
-        music.pause();
-        musicBtn.textContent = "Play Music";
-        isPlaying = false;
-    }
+    if(!isPlaying){music.play(); musicBtn.textContent="Pause Music"; isPlaying=true;}
+    else {music.pause(); musicBtn.textContent="Play Music"; isPlaying=false;}
 });
 
 // Scroll animation for project cards
@@ -153,36 +109,12 @@ window.addEventListener('scroll', () => {
     cards.forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
         if(cardTop < triggerBottom){
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+            card.style.opacity='1';
+            card.style.transform='translateY(0)';
         }
     });
 });
 </script>
-
-<!-- Parallax Avatar Section -->
-<div class="parallax">Osmium Studio</div>
-
-<!-- Content Section -->
-<div class="content">
-    <div class="title">Our Roblox Projects</div>
-
-    <!-- Game Card -->
-    <div class="project-card">
-        <h2>Our Roblox Game</h2>
-        <img src="https://tr.rbxcdn.com/180DAY-3dba360d5a57f5c9f0320bc9bf468aa2/768/432/Image/Webp/noFilter" alt="Game Image">
-        <br>
-        <a href="https://www.roblox.com/games/139755066781834/1-2-OsmiumHvH" target="_blank">Play the Game</a>
-    </div>
-
-    <!-- Group Card -->
-    <div class="project-card">
-        <h2>Roblox Group</h2>
-        <img src="https://tr.rbxcdn.com/180DAY-0be07e9b0df1c3bb905cabd5cfe6d18d/150/150/Image/Webp/noFilter" alt="Group Image">
-        <br>
-        <a href="https://www.roblox.com/communities/823010003/Osmium-Studio#!/about" target="_blank">Visit the Group</a>
-    </div>
-</div>
 
 </body>
 </html>
